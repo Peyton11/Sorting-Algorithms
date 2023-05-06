@@ -1,6 +1,6 @@
 #include <iostream>
 
-// Function Prototypes:
+// Function Prototypes
 void introduction();
 int arraySize();
 void printArray(int*, int);
@@ -14,8 +14,6 @@ void bubbleSort(int*, int);
 //radix sort
 void selectionSort(int*, int);
 // shell sort
-
-
 
 int main()
 {
@@ -36,7 +34,8 @@ int main()
 	std::cout << "Original array:\n";
 	printArray(array, size);
 
-	delete[] array; // Avoids memory leakage.
+	delete[] array; // Delete array to avoid memory leakage.
+	system("pause");
 	return 0;
 }
 
