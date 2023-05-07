@@ -9,17 +9,17 @@ I made this project to learn more about different sorting algorithms and their t
 This project uses **dynamic memory allocation** to create an array at runtime. A dynamic array is needed if the user wants to specify the length of it. 
 
 There are then 10 different sorting algorithms with a variety of different time complexities. 
-Algorithms used:
-* Bubble Sort
-* Bucket Sort
-* Counting Sort
-* Heap Sort
-* Insertion Sort
-* Merge Sort
-* Quick Sort
-* Radix Sort
-* Selection Sort
-* Shell Sort
+The algorithms used and their time complexites:
+* Bubble Sort- O(n^2).
+* Bucket Sort- O(n^2).
+* Counting Sort- O(n+k), where k is the range of data.
+* Heap Sort-O(nlogn).
+* Insertion Sort- O(n^2).
+* Merge Sort- O(nlogn).
+* Quick Sort- O(n^2) in the worst case, but typically O(nlogn) on average.
+* Radix Sort- O(d*(n+k)), where d is the number of digits in the largest number and k is the range of data.
+* Selection Sort- O(n^2).
+* Shell Sort- O(n^2).
 
 ## Installation
 
@@ -27,7 +27,7 @@ To run this program, download the executable file (.exe) and run it. If you woul
 
 ## Usage
 
-To use this program, just run the executable. The command line interface will ask you to input how many elements you would like in the array. After that, provide the elements that you wish to add to each index. Preferably, they should not be in order so that the program can showcase the sorting algorithms!
+The command line interface will ask you to input how many elements you would like in the array. After that, provide the elements that you wish to add to each index. Preferably, they should not be in order so that the program can showcase the sorting algorithms!
 
 Once the array is made, a list of the algorithms will be shown. Just input the number that is next to the corresponding array. You can run these algorithms as many times as you would like. 
 
