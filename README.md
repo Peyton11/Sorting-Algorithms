@@ -8,14 +8,12 @@ I made this project to learn more about different sorting algorithms and their t
 
 This project uses **dynamic memory allocation** to create an array at runtime. A dynamic array is needed if the user wants to specify the length of it. 
 
-There are then 10 different sorting algorithms with a variety of different time complexities. 
-The algorithms used and their time complexites:
+There are 9 different sorting algorithms with a variety of different time complexities. 
+The algorithms used in the program:
 * Bubble Sort- O(n^2).
 * Bucket Sort- O(n^2).
 * Counting Sort- O(n+k), where k is the range of data.
-* Heap Sort-O(nlogn).
 * Insertion Sort- O(n^2).
-* Merge Sort- O(nlogn).
 * Quick Sort- O(n^2) in the worst case, but typically O(nlogn) on average.
 * Radix Sort- O(d*(n+k)), where d is the number of digits in the largest number and k is the range of data.
 * Selection Sort- O(n^2).
