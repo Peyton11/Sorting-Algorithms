@@ -3,13 +3,6 @@
 #include <vector>
 #include <algorithm>
 
-/*
-TO DO by 5/13/2023:
-Visualize algorithms.
-Modify README.
-*/
-
-
 // Function Prototypes
 void introduction();
 int arraySize();
@@ -29,66 +22,104 @@ int main()
 {
 	introduction();
 
-	// Creates array at runtime. Size is specified by user in arraySize() function.
-	int size = arraySize();
-	int* array = new int[size];
-
-	// User creates each individual element.
-	for (int i = 0; i < size; i++)
+	int* array = nullptr;
+	char again;
+	bool invalid = true;
+	do
 	{
-		std::cout << "Enter element " << i + 1 << ": ";
-		std::cin >> array[i];
+		// Creates array at runtime. Size is specified by user in arraySize() function.
+		int size = arraySize();
+		delete[] array;
+		int* array = new int[size];
+
+		// User creates each individual element.
+		for (int i = 0; i < size; i++)
+		{
+			invalid = true;
+			do
+			{
+				std::cout << "Enter element " << i + 1 << ": ";
+				std::cin >> array[i];
+				if (std::cin.fail())
+				{
+					std::cout << "Please input an integer.\n";
+					std::cin.clear();
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				}
+				else
+				{
+					invalid = false;
+				}
+			} 
+			while (invalid);
+		}
+
+		// Prints original array
+		std::cout << "Original array:\n";
+		printArray(array, size);
+
+		int choice = algorithmChoice();
+		switch(choice)
+		{
+			case 0:
+				bubbleSort(array, size);
+				std::cout << "After Bubble Sort:\n";
+				printArray(array, size);
+				break;
+			case 1:
+				bucketSort(array, size);
+				std::cout << "After Bucket Sort:\n";
+				printArray(array, size);
+				break;
+			case 2:
+				countingSort(array, size);
+				std::cout << "After Counting Sort:\n";
+				printArray(array, size);
+				break;
+			case 3:
+				insertionSort(array, size);
+				std::cout << "After Insertion Sort:\n";
+				printArray(array, size);
+				break;
+			case 4:
+				quickSort(array, size);
+				std::cout << "After Quick Sort:\n";
+				printArray(array, size);
+				break;
+			case 5:
+				radixSort(array, size);
+				std::cout << "After Radix Sort:\n";
+				printArray(array, size);
+				break;
+			case 6:
+				selectionSort(array, size);
+				std::cout << "After Selection Sort:\n";
+				printArray(array, size);
+				break;
+			case 7:
+				shellSort(array, size);
+				std::cout << "After Shell Sort:\n";
+				printArray(array, size);
+				break;
+		}
+
+		// User input and validation for running program again.
+		std::cout << "Do you want to run the program again? [Y/N]: ";
+		std::cin >> again;
+		if (std::cin.fail())
+		{
+			std::cout << "Please input a 'Y' for yes or 'N' for no\n";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+		else
+		{
+			invalid = false;
+		}
 	}
-
-	// Prints original array
-	std::cout << "Original array:\n";
-	printArray(array, size);
-
-	int choice = algorithmChoice();
-	switch(choice)
-	{
-		case 0:
-			bubbleSort(array, size);
-			std::cout << "After Bubble Sort:\n";
-			printArray(array, size);
-			break;
-		case 1:
-			bucketSort(array, size);
-			std::cout << "After Bucket Sort:\n";
-			printArray(array, size);
-			break;
-		case 2:
-			countingSort(array, size);
-			std::cout << "After Counting Sort:\n";
-			printArray(array, size);
-			break;
-		case 3:
-			insertionSort(array, size);
-			std::cout << "After Insertion Sort:\n";
-			printArray(array, size);
-			break;
-		case 4:
-			quickSort(array, size);
-			std::cout << "After Quick Sort:\n";
-			printArray(array, size);
-			break;
-		case 5:
-			radixSort(array, size);
-			std::cout << "After Radix Sort:\n";
-			printArray(array, size);
-			break;
-		case 6:
-			selectionSort(array, size);
-			std::cout << "After Selection Sort:\n";
-			printArray(array, size);
-			break;
-		case 7:
-			shellSort(array, size);
-			std::cout << "After Shell Sort:\n";
-			printArray(array, size);
-			break;
-	}
-
+	while (again == 'Y' || again == 'y');
+	
+	std::cout << "Thank you for using the program!\n";
 	delete[] array; // Delete array to avoid memory leakage.
 	system("pause");
 	return 0;
@@ -137,11 +168,27 @@ void printArray(int* array, int size)
 int algorithmChoice()
 {
 	int choice;
-	std::cout << "Which algorithm would you like to use? Here are your choices:\nBubble Sort [0]\nBucket Sort [1]\nCounting Sort [2]\nInsertion Sort [3]\n"
-			  << "Quick Sort [4]\nRadix Sort [5]\nSelection Sort [6]\nShell Sort [7]\n";
-	std::cout << "Algorithm: ";
-	std::cin >> choice;
+	bool invalid = true; // Flag for input validation.
+	do
+	{
+		std::cout << "Which algorithm would you like to use? Here are your choices:\nBubble Sort [0]\nBucket Sort [1]\nCounting Sort [2]\nInsertion Sort [3]\n"
+				<< "Quick Sort [4]\nRadix Sort [5]\nSelection Sort [6]\nShell Sort [7]\n";
+		std::cout << "Algorithm: ";
+		std::cin >> choice;
+		if (std::cin.fail() || choice < 0 || choice > 7)
+		{
+			std::cout << "Please input an integer 0-7.\n\n";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+		else
+		{
+			invalid = false;
+		}
+	}
+	while (invalid);
 	std::cout << std::endl;
+
 	return choice;
 }
 
